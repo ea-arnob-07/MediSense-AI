@@ -1,0 +1,322 @@
+{
+  "prediction_id": "a835440b-d2c5-4e6f-b396-50d062c7b637",
+  "generated_at": "2026-07-23T22:09:55.400229+00:00",
+  "model_version": "synthetic-ensemble-20260723-183835",
+  "predictions": [
+    {
+      "disease": "Dengue",
+      "disease_display": "Dengue",
+      "disease_display_bn": "ডেঙ্গু",
+      "probability": 0.999336,
+      "category": "Tropical_Infectious_Other",
+      "category_bn": "সংক্রামক ও উষ্ণমণ্ডলীয়",
+      "base_urgency": "Urgent",
+      "typical_duration_days": "3-14",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Fever",
+            "display": "Fever",
+            "display_bn": "জ্বর",
+            "severity": 4
+          },
+          {
+            "symptom": "Severe_Headache",
+            "display": "Severe Headache",
+            "display_bn": "তীব্র মাথাব্যথা",
+            "severity": 3
+          },
+          {
+            "symptom": "Body_Ache",
+            "display": "Body Ache",
+            "display_bn": "শরীর ব্যথা",
+            "severity": 4
+          },
+          {
+            "symptom": "Joint_Pain",
+            "display": "Joint Pain",
+            "display_bn": "জয়েন্টে ব্যথা",
+            "severity": 3
+          },
+          {
+            "symptom": "Rash",
+            "display": "Rash",
+            "display_bn": "চামড়ায় ফুসকুড়ি",
+            "severity": 2
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Petechiae",
+            "display": "Petechiae",
+            "display_bn": "ত্বকে ক্ষুদ্র লাল দাগ"
+          }
+        ],
+        "signature_match_ratio": 0.833
+      }
+    },
+    {
+      "disease": "Chikungunya",
+      "disease_display": "Chikungunya",
+      "disease_display_bn": "চিকুনগুনিয়া",
+      "probability": 0.00053,
+      "category": "Tropical_Infectious_Other",
+      "category_bn": "সংক্রামক ও উষ্ণমণ্ডলীয়",
+      "base_urgency": "Urgent",
+      "typical_duration_days": "3-60",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Fever",
+            "display": "Fever",
+            "display_bn": "জ্বর",
+            "severity": 4
+          },
+          {
+            "symptom": "Joint_Pain",
+            "display": "Joint Pain",
+            "display_bn": "জয়েন্টে ব্যথা",
+            "severity": 3
+          },
+          {
+            "symptom": "Rash",
+            "display": "Rash",
+            "display_bn": "চামড়ায় ফুসকুড়ি",
+            "severity": 2
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Headache",
+            "display": "Headache",
+            "display_bn": "মাথাব্যথা"
+          },
+          {
+            "symptom": "Fatigue",
+            "display": "Fatigue",
+            "display_bn": "ক্লান্তি"
+          }
+        ],
+        "signature_match_ratio": 0.6
+      }
+    },
+    {
+      "disease": "Lyme_Disease",
+      "disease_display": "Lyme Disease",
+      "disease_display_bn": "লাইম রোগ",
+      "probability": 0.000112,
+      "category": "Tropical_Infectious_Other",
+      "category_bn": "সংক্রামক ও উষ্ণমণ্ডলীয়",
+      "base_urgency": "Soon",
+      "typical_duration_days": "3-180",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Rash",
+            "display": "Rash",
+            "display_bn": "চামড়ায় ফুসকুড়ি",
+            "severity": 2
+          },
+          {
+            "symptom": "Fever",
+            "display": "Fever",
+            "display_bn": "জ্বর",
+            "severity": 4
+          },
+          {
+            "symptom": "Joint_Pain",
+            "display": "Joint Pain",
+            "display_bn": "জয়েন্টে ব্যথা",
+            "severity": 3
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Headache",
+            "display": "Headache",
+            "display_bn": "মাথাব্যথা"
+          },
+          {
+            "symptom": "Facial_Droop",
+            "display": "Facial Droop",
+            "display_bn": "মুখের একপাশ বেঁকে যাওয়া"
+          }
+        ],
+        "signature_match_ratio": 0.6
+      }
+    },
+    {
+      "disease": "Japanese_Encephalitis",
+      "disease_display": "Japanese Encephalitis",
+      "disease_display_bn": "জাপানিজ এনসেফালাইটিস",
+      "probability": 5e-06,
+      "category": "Tropical_Infectious_Other",
+      "category_bn": "সংক্রামক ও উষ্ণমণ্ডলীয়",
+      "base_urgency": "Emergency",
+      "typical_duration_days": "2-21",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Fever",
+            "display": "Fever",
+            "display_bn": "জ্বর",
+            "severity": 4
+          },
+          {
+            "symptom": "Severe_Headache",
+            "display": "Severe Headache",
+            "display_bn": "তীব্র মাথাব্যথা",
+            "severity": 3
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Confusion",
+            "display": "Confusion",
+            "display_bn": "বিভ্রান্তি"
+          },
+          {
+            "symptom": "Seizure",
+            "display": "Seizure",
+            "display_bn": "খিঁচুনি"
+          },
+          {
+            "symptom": "Muscle_Rigidity",
+            "display": "Muscle Rigidity",
+            "display_bn": "পেশি শক্ত হওয়া"
+          }
+        ],
+        "signature_match_ratio": 0.4
+      }
+    },
+    {
+      "disease": "Rubella",
+      "disease_display": "Rubella",
+      "disease_display_bn": "রুবেলা",
+      "probability": 5e-06,
+      "category": "Dermatological",
+      "category_bn": "ত্বক",
+      "base_urgency": "Soon",
+      "typical_duration_days": "5-21",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Rash",
+            "display": "Rash",
+            "display_bn": "চামড়ায় ফুসকুড়ি",
+            "severity": 2
+          },
+          {
+            "symptom": "Fever",
+            "display": "Fever",
+            "display_bn": "জ্বর",
+            "severity": 4
+          },
+          {
+            "symptom": "Joint_Pain",
+            "display": "Joint Pain",
+            "display_bn": "জয়েন্টে ব্যথা",
+            "severity": 3
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Swollen_Lymph_Nodes",
+            "display": "Swollen Lymph Nodes",
+            "display_bn": "লিম্ফ নোড ফুলে যাওয়া"
+          },
+          {
+            "symptom": "Red_Eyes",
+            "display": "Red Eyes",
+            "display_bn": "চোখ লাল"
+          }
+        ],
+        "signature_match_ratio": 0.6
+      }
+    }
+  ],
+  "risk_assessment": {
+    "risk_level": "Moderate",
+    "risk_score": 4,
+    "urgency": "Clinical review within 24–48 hours",
+    "emergency": false,
+    "red_flags": [],
+    "abnormal_vitals": [
+      "High temperature (39.2°C)"
+    ],
+    "rationale": [
+      "Dengue profile has urgent base urgency"
+    ]
+  },
+  "care_guidance": {
+    "recommended_actions": [
+      "Arrange a clinician review within 24–48 hours.",
+      "Record symptom changes and any home measurements to discuss during the visit."
+    ],
+    "what_to_monitor": [
+      "Track temperature, symptom severity, and duration.",
+      "Track breathing difficulty, chest pain, mental status, hydration, urine output, and new weakness.",
+      "Re-check abnormal home measurements with a reliable device when safe to do so."
+    ],
+    "clinician_may_consider": [
+      "infection-focused examination",
+      "locally appropriate blood tests and exposure history"
+    ],
+    "medication_safety": [
+      "Do not start, stop, or change prescription medicine based only on this result.",
+      "Do not use leftover antibiotics or steroids without a licensed clinician's advice.",
+      "Seek care sooner if symptoms are rapidly worsening, new warning signs appear, or you are worried."
+    ]
+  },
+  "uncertainty": {
+    "status": "low",
+    "top_probability": 0.999336,
+    "top_two_margin": 0.998806,
+    "normalized_entropy": 0.001149,
+    "unknown_symptoms": [],
+    "message": "The model found a comparatively clear pattern, but this is still not a diagnosis."
+  },
+  "input_summary": {
+    "active_symptom_count": 6,
+    "maximum_symptom_severity": 4,
+    "active_symptoms": [
+      {
+        "symptom": "Body_Ache",
+        "display": "Body Ache",
+        "display_bn": "শরীর ব্যথা",
+        "severity": 4
+      },
+      {
+        "symptom": "Fever",
+        "display": "Fever",
+        "display_bn": "জ্বর",
+        "severity": 4
+      },
+      {
+        "symptom": "Joint_Pain",
+        "display": "Joint Pain",
+        "display_bn": "জয়েন্টে ব্যথা",
+        "severity": 3
+      },
+      {
+        "symptom": "Severe_Headache",
+        "display": "Severe Headache",
+        "display_bn": "তীব্র মাথাব্যথা",
+        "severity": 3
+      },
+      {
+        "symptom": "Nausea",
+        "display": "Nausea",
+        "display_bn": "বমি বমি ভাব",
+        "severity": 2
+      },
+      {
+        "symptom": "Rash",
+        "display": "Rash",
+        "display_bn": "চামড়ায় ফুসকুড়ি",
+        "severity": 2
+      }
+    ]
+  },
+  "disclaimer": "Educational decision-support output only. The dataset is synthetic and the model is not clinically validated, medically certified, or a substitute for examination, testing, diagnosis, or treatment by a licensed professional."
+}

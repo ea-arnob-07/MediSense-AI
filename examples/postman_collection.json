@@ -1,0 +1,38 @@
+{
+  "info": {
+    "name": "Medical Decision Support API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "Predict",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"age\": 28,\n  \"sex\": \"Male\",\n  \"pregnancy_status\": \"Not_Applicable\",\n  \"smoking_status\": \"Never\",\n  \"symptom_duration_days\": 3,\n  \"onset_type\": \"Sudden\",\n  \"temperature_c\": 39.2,\n  \"heart_rate_bpm\": 102,\n  \"respiratory_rate_bpm\": 19,\n  \"spo2_percent\": 98,\n  \"systolic_bp\": 112,\n  \"diastolic_bp\": 72,\n  \"bmi\": 23.5,\n  \"random_glucose_mg_dl\": 105,\n  \"pain_score_0_10\": 6,\n  \"symptoms\": {\n    \"Fever\": 4,\n    \"Severe_Headache\": 3,\n    \"Body_Ache\": 4,\n    \"Joint_Pain\": 3,\n    \"Rash\": 2,\n    \"Nausea\": 2\n  }\n}\n"
+        },
+        "url": "{{base_url}}/predict"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    }
+  ]
+}

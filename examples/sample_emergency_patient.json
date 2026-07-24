@@ -1,0 +1,34 @@
+{
+  "patient_name": "Emergency Demo Patient",
+  "age": 61,
+  "sex": "Male",
+  "pregnancy_status": "Not_Applicable",
+  "smoking_status": "Former",
+  "symptom_duration_days": 1,
+  "onset_type": "Sudden",
+  "temperature_f": 98.2,
+  "heart_rate_bpm": 110,
+  "respiratory_rate_bpm": 25,
+  "spo2_percent": 92,
+  "systolic_bp": 150,
+  "diastolic_bp": 92,
+  "height_feet": 5,
+  "height_inches": 7,
+  "weight_kg": 78,
+  "random_glucose_mg_dl": 118,
+  "pain_score_0_10": 9,
+  "provided_measurements": [
+    "respiratory_rate_bpm",
+    "spo2_percent",
+    "systolic_bp",
+    "diastolic_bp",
+    "random_glucose_mg_dl"
+  ],
+  "symptoms": {
+    "Chest_Pain": 5,
+    "Shortness_of_Breath": 4,
+    "Cold_Sweat": 4,
+    "Nausea": 3,
+    "Jaw_Pain": 3
+  }
+}

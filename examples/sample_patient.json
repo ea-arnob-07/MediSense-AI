@@ -1,0 +1,35 @@
+{
+  "patient_name": "Demo Patient",
+  "age": 28,
+  "sex": "Male",
+  "pregnancy_status": "Not_Applicable",
+  "smoking_status": "Never",
+  "symptom_duration_days": 3,
+  "onset_type": "Sudden",
+  "temperature_f": 102.6,
+  "heart_rate_bpm": 102,
+  "respiratory_rate_bpm": 19,
+  "spo2_percent": 98,
+  "systolic_bp": 112,
+  "diastolic_bp": 72,
+  "height_feet": 5,
+  "height_inches": 8,
+  "weight_kg": 71.2,
+  "random_glucose_mg_dl": 105,
+  "pain_score_0_10": 6,
+  "provided_measurements": [
+    "respiratory_rate_bpm",
+    "spo2_percent",
+    "systolic_bp",
+    "diastolic_bp",
+    "random_glucose_mg_dl"
+  ],
+  "symptoms": {
+    "Fever": 4,
+    "Severe_Headache": 3,
+    "Body_Ache": 4,
+    "Joint_Pain": 3,
+    "Rash": 2,
+    "Nausea": 2
+  }
+}

@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en-BD">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030208">
+  <meta name="description" content="MediSense AI educational disease prediction and triage interface">
+  <title>MediSense AI | Intelligent Health Assessment</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <div class="aurora aurora-one" aria-hidden="true"></div>
+  <div class="aurora aurora-two" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <noscript>
+    <div class="noscript">JavaScript is required to use this assessment interface.</div>
+  </noscript>
+
+  <div class="app-shell">
+    <header class="topbar glass-panel">
+      <button class="brand" type="button" data-go="welcome" aria-label="Go to welcome page">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-core"></span>
+          <span class="brand-orbit orbit-a"></span>
+          <span class="brand-orbit orbit-b"></span>
+        </span>
+        <span>
+          <strong>MediSense <em>AI</em></strong>
+          <small>Intelligent Disease Prediction & Triage</small>
+        </span>
+      </button>
+
+      <nav class="stepper" aria-label="Assessment progress">
+        <button class="step active" type="button" data-step-target="welcome">
+          <span>01</span><b>Overview (পরিচিতি)</b>
+        </button>
+        <i></i>
+        <button class="step" type="button" data-step-target="profile" disabled>
+          <span>02</span><b>Patient data (রোগীর তথ্য)</b>
+        </button>
+        <i></i>
+        <button class="step" type="button" data-step-target="symptoms" disabled>
+          <span>03</span><b>Symptoms (লক্ষণ)</b>
+        </button>
+        <i></i>
+        <button class="step" type="button" data-step-target="results" disabled>
+          <span>04</span><b>Analysis (বিশ্লেষণ)</b>
+        </button>
+      </nav>
+
+      <div class="top-actions">
+        <div class="top-developer-credit" aria-label="Developer credit">
+          <span>Developed by</span><strong>Estiuk Arafat Arnob</strong>
+        </div>
+        <button class="icon-button" id="motionToggle" type="button" title="Reduce motion (অ্যানিমেশন কমান)" aria-label="Toggle reduced motion">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h3l2-5 4 10 2-5h5M3 4v16h18"/></svg>
+        </button>
+        <span class="system-status"><i></i> System ready (সিস্টেম প্রস্তুত)</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen active" id="screen-welcome" data-screen="welcome" aria-labelledby="welcome-title">
+        <div class="hero-layout">
+          <div class="hero-copy reveal">
+            <div class="eyebrow"><span></span> AI-assisted health assessment</div>
+            <div class="hero-brand-line"><i aria-hidden="true"></i><b>MediSense AI</b><span>Clinical Intelligence Experience</span></div>
+            <h1 id="welcome-title">Smarter symptom insights for <span>safer health decisions.</span></h1>
+            <p class="hero-lead">A modern bilingual decision-support experience that combines symptom severity, patient measurements, calibrated probability, conservative triage, and explainable insights.</p>
+
+            <div class="hero-actions">
+              <button class="button primary magnetic" type="button" id="beginAssessment">
+                Begin assessment (মূল্যায়ন শুরু করুন)
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+              <button class="button secondary" type="button" id="loadDemo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+                View demo flow (ডেমো দেখুন)
+              </button>
+            </div>
+
+            <div class="trust-row">
+              <div><strong id="diseaseCount">179</strong><span>Disease profiles (রোগ)</span></div>
+              <div><strong id="symptomCount">208</strong><span>Symptoms (লক্ষণ)</span></div>
+              <div><strong id="modelAccuracy">94.8%</strong><span>Test accuracy (পরীক্ষামূলক)</span></div>
+            </div>
+
+            <div class="hero-credit"><span>Designed &amp; Developed by</span><strong>Estiuk Arafat Arnob</strong><i>Bangladesh</i></div>
+          </div>
+
+          <div class="hero-visual reveal delay-1" aria-label="Interactive medical intelligence visualization">
+            <div class="orb-stage tilt-card" data-tilt-strength="12">
+              <div class="orb-grid" aria-hidden="true"></div>
+              <div class="orb-spotlight" aria-hidden="true"></div>
+              <div class="scan-beam" aria-hidden="true"></div>
+              <div class="orb-ring ring-one"></div>
+              <div class="orb-ring ring-two"></div>
+              <div class="orb-ring ring-three"></div>
+              <div class="health-orb">
+                <div class="orb-glow"></div>
+                <div class="core-3d-wrapper">
+                  <div class="core-3d-ring r1"></div>
+                  <div class="core-3d-ring r2"></div>
+                  <div class="core-3d-ring r3"></div>
+                  <div class="core-nucleus"></div>
+                </div>
+                <span class="orb-label">MEDISENSE<br><b>AI CORE</b></span>
+              </div>
+              <div class="floating-card fc-one">
+                <span class="mini-icon violet">◈</span>
+                <div><small>Calibrated output (ফলাফল)</small><strong>Top-5 differential</strong></div>
+              </div>
+              <div class="floating-card fc-two">
+                <span class="mini-icon cyan">✦</span>
+                <div><small>Safety layer (নিরাপত্তা)</small><strong>Red-flag screening</strong></div>
+              </div>
+              <div class="floating-card fc-three">
+                <span class="mini-icon pink">⌁</span>
+                <div><small>Explainability (ব্যাখ্যা)</small><strong>Matched evidence</strong></div>
+              </div>
+              <span class="data-node node-a"></span><span class="data-node node-b"></span><span class="data-node node-c"></span>
+              <div class="orb-console" aria-hidden="true">
+                <div class="console-status">
+                  <span class="console-status-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.7 2.9 8 7 10 4.1-2 7-5.3 7-10V6l-7-3Z"/><path d="M8 12h2l1.2-2.4 1.7 4.8L14.2 12H17"/></svg>
+                  </span>
+                  <div><small>AI STATUS</small><b>Clinical Pattern Engine</b></div>
+                </div>
+                <div class="console-wave"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <small class="console-caption">Active secure assessment session</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid reveal delay-2">
+          <article class="feature-card glass-panel tilt-card">
+            <span class="feature-number">01</span>
+            <div class="feature-icon">⌁</div>
+            <h3>Patient context (রোগীর তথ্য)</h3>
+            <p>Demographics, medical background, symptom duration, onset, pain and vital measurements.</p>
+          </article>
+          <article class="feature-card glass-panel tilt-card">
+            <span class="feature-number">02</span>
+            <div class="feature-icon">✦</div>
+            <h3>Severity mapping (তীব্রতা নির্ধারণ)</h3>
+            <p>Search and score relevant symptoms with an intuitive five-level severity interface.</p>
+          </article>
+          <article class="feature-card glass-panel tilt-card">
+            <span class="feature-number">03</span>
+            <div class="feature-icon">◉</div>
+            <h3>Visual analysis (ভিজ্যুয়াল বিশ্লেষণ)</h3>
+            <p>Probability, uncertainty, risk, vital status, evidence matching, and care-navigation charts.</p>
+          </article>
+        </div>
+
+        <div class="safety-ribbon glass-panel reveal delay-3">
+          <span class="safety-icon">!</span>
+          <p><strong>Educational prototype:</strong> The model is trained on synthetic data and is not clinically validated. It cannot diagnose disease or replace a licensed clinician. Emergency warning signs require immediate professional help.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-profile" data-screen="profile" aria-labelledby="profile-title">
+        <div class="page-heading reveal">
+          <div>
+            <div class="eyebrow"><span></span> Step 1 of 3 (ধাপ ১)</div>
+            <h2 id="profile-title">Build the patient health profile (রোগীর স্বাস্থ্য তথ্য দিন)</h2>
+            <p>Complete the fields below. Values are used only for this local assessment request. (নিচের তথ্যগুলো পূরণ করুন।)</p>
+          </div>
+          <div class="profile-completion">
+            <div class="mini-ring" id="profileRing"><span>0%</span></div>
+            <div><strong>Profile completeness (তথ্য পূরণের হার)</strong><small>Required fields update automatically (স্বয়ংক্রিয়ভাবে আপডেট হয়)</small></div>
+          </div>
+        </div>
+
+        <form id="patientForm" novalidate>
+          <div class="form-layout">
+            <section class="form-panel glass-panel reveal">
+              <div class="panel-heading">
+                <span class="section-icon">01</span>
+                <div><h3>Personal information (ব্যক্তিগত তথ্য)</h3><p>Basic demographic context for the assessment. (প্রাথমিক পরিচিতি ও জনতাত্ত্বিক তথ্য)</p></div>
+              </div>
+              <div class="form-grid two-col">
+                <label class="field wide">
+                  <span>Patient name (রোগীর নাম) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"/></svg><input id="patient_name" type="text" maxlength="80" placeholder="Enter patient name / রোগীর নাম লিখুন"></div>
+                </label>
+                <label class="field">
+                  <span>Age (বয়স) <b>*</b></span>
+                  <div class="input-wrap"><svg viewBox="0 0 24 24"><path d="M8 2v3m8-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg><input id="age" type="number" min="0" max="120" placeholder="Enter age / বয়স লিখুন" required><small>years</small></div>
+                  <i class="field-error"></i>
+                </label>
+                <label class="field">
+                  <span>Biological sex (লিঙ্গ) <b>*</b></span>
+                  <div class="input-wrap select-wrap"><svg viewBox="0 0 24 24"><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 0v8m-3-3h6"/></svg><select id="sex" required><option value="">Select (নির্বাচন করুন)</option><option value="Female">Female (নারী)</option><option value="Male">Male (পুরুষ)</option><option value="Other">Other (অন্যান্য)</option></select></div>
+                  <i class="field-error"></i>
+                </label>
+                <label class="field hidden-field" id="pregnancyField">
+                  <span>Pregnancy status (গর্ভাবস্থা) <b>*</b></span>
+                  <div class="input-wrap select-wrap"><svg viewBox="0 0 24 24"><path d="M12 3c4 0 7 3.2 7 7.2 0 5.4-7 10.8-7 10.8S5 15.6 5 10.2C5 6.2 8 3 12 3Z"/></svg><select id="pregnancy_status"><option value="No">No (না)</option><option value="Yes">Yes (হ্যাঁ)</option><option value="Unknown">Unknown (অজানা)</option></select></div>
+                </label>
+                <label class="field">
+                  <span>Smoking status (ধূমপানের অবস্থা) <b>*</b></span>
+                  <div class="input-wrap select-wrap"><svg viewBox="0 0 24 24"><path d="M3 15h14v4H3v-4Zm14 0h4v4h-4m-8-8c0-3 4-2 4-5 0-1-.4-2-1-3m4 8c0-2 3-2 3-4 0-1-.4-2-1-3"/></svg><select id="smoking_status" required><option value="Never">Never (কখনো না)</option><option value="Former">Former (আগে করতেন)</option><option value="Current">Current (বর্তমানে করেন)</option></select></div>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-panel glass-panel reveal delay-1">
+              <div class="panel-heading">
+                <span class="section-icon">02</span>
+                <div><h3>Clinical background (ক্লিনিক্যাল ইতিহাস)</h3><p>Current pattern and relevant long-term conditions. (বর্তমান সমস্যা ও দীর্ঘমেয়াদি রোগ)</p></div>
+              </div>
+              <div class="form-grid two-col">
+                <label class="field">
+                  <span>Symptom duration (লক্ষণের সময়কাল) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg><input id="symptom_duration_days" type="number" min="0" max="3650" placeholder="Enter Symptom duration (লক্ষণের সময়কাল)"><small>days</small></div>
+                  <small style="display:block;margin-top:6px;color:var(--dim);font-size:9px;">Blank uses default 1 day (ফাঁকা রাখলে ১ দিন)</small>
+                </label>
+                <label class="field">
+                  <span>Onset type (শুরুর ধরন) <b>*</b></span>
+                  <div class="input-wrap select-wrap"><svg viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 8-12h-6l1-8Z"/></svg><select id="onset_type" required><option value="Gradual">Gradual (ধীরে ধীরে)</option><option value="Sudden">Sudden (হঠাৎ)</option><option value="Intermittent">Intermittent (মাঝে মাঝে)</option></select></div>
+                </label>
+                <label class="field">
+                  <span>Primary comorbidity (প্রধান দীর্ঘমেয়াদি রোগ)</span>
+                  <div class="input-wrap select-wrap"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 12h8m-4-4v8"/></svg><select id="comorbidity_1"><option value="">None selected (কোনোটি নয়)</option></select></div>
+                </label>
+                <label class="field">
+                  <span>Secondary comorbidity (দ্বিতীয় দীর্ঘমেয়াদি রোগ)</span>
+                  <div class="input-wrap select-wrap"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 12h8m-4-4v8"/></svg><select id="comorbidity_2"><option value="">None selected (কোনোটি নয়)</option></select></div>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-panel glass-panel span-two reveal delay-2">
+              <div class="panel-heading panel-heading-split">
+                <div class="heading-cluster"><span class="section-icon">03</span><div><h3>Vital signs & measurements (গুরুত্বপূর্ণ শারীরিক পরিমাপ)</h3><p>Enter the most recent reliable readings available. Optional fields use a normal default when left blank. (ঐচ্ছিক ঘর ফাঁকা থাকলে স্বাভাবিক মান ব্যবহৃত হবে।)</p></div></div>
+                <span class="live-badge"><i></i> Live validation (তাৎক্ষণিক যাচাই)</span>
+              </div>
+              <div class="vitals-grid">
+                <label class="field metric-field optional-metric" data-normal="97.0–99.0°F" data-default="98.6">
+                  <span>Temperature (তাপমাত্রা) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="temperature_f" type="number" min="86" max="113" step="0.1" placeholder="Optional (ঐচ্ছিক)"><small>°F</small></div>
+                  <div class="range-track"><i style="--value:47%"></i></div><small>Blank uses default 98.6 °F (ফাঁকা রাখলে ৯৮.৬)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-normal="60–100 bpm" data-default="80">
+                  <span>Heart rate (হৃদস্পন্দন) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="heart_rate_bpm" type="number" min="20" max="250" placeholder="Optional (ঐচ্ছিক)"><small>bpm</small></div>
+                  <div class="range-track"><i style="--value:28%"></i></div><small>Blank uses default 80 bpm (ফাঁকা রাখলে ৮০)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-default="16">
+                  <span>Respiratory rate (শ্বাসের হার) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="respiratory_rate_bpm" type="number" min="4" max="80" placeholder="Optional (ঐচ্ছিক)"><small>/min</small></div>
+                  <div class="range-track"><i style="--value:18%"></i></div><small>Blank uses default 16/min (ফাঁকা রাখলে ১৬)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-default="98">
+                  <span>Oxygen saturation (অক্সিজেন স্যাচুরেশন) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="spo2_percent" type="number" min="50" max="100" placeholder="Optional (ঐচ্ছিক)"><small>%</small></div>
+                  <div class="range-track"><i style="--value:96%"></i></div><small>Blank uses default 98% (ফাঁকা রাখলে ৯৮%)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-default="120">
+                  <span>Systolic BP (সিস্টোলিক রক্তচাপ) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="systolic_bp" type="number" min="40" max="280" placeholder="Optional (ঐচ্ছিক)"><small>mmHg</small></div>
+                  <div class="range-track"><i style="--value:34%"></i></div><small>Blank uses default 120 mmHg (ফাঁকা রাখলে ১২০)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-default="80">
+                  <span>Diastolic BP (ডায়াস্টোলিক রক্তচাপ) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="diastolic_bp" type="number" min="20" max="180" placeholder="Optional (ঐচ্ছিক)"><small>mmHg</small></div>
+                  <div class="range-track"><i style="--value:38%"></i></div><small>Blank uses default 80 mmHg (ফাঁকা রাখলে ৮০)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-default="100">
+                  <span>Random glucose (র‌্যান্ডম গ্লুকোজ) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="random_glucose_mg_dl" type="number" min="20" max="800" placeholder="Optional (ঐচ্ছিক)"><small>mg/dL</small></div>
+                  <div class="range-track"><i style="--value:15%"></i></div><small>Blank uses default 100 mg/dL (ফাঁকা রাখলে ১০০)</small><i class="field-error"></i>
+                </label>
+                <label class="field metric-field optional-metric" data-normal="0–3/10" data-default="0">
+                  <span>Pain score (ব্যথার মাত্রা) <em>optional / ঐচ্ছিক</em></span>
+                  <div class="input-wrap"><input id="pain_score_0_10" type="number" min="0" max="10" placeholder="Optional (ঐচ্ছিক)"><small>/10</small></div>
+                  <div class="range-track"><i style="--value:0%"></i></div><small>Blank uses default 0 (ফাঁকা রাখলে ০)</small><i class="field-error"></i>
+                </label>
+              </div>
+              <div class="vitals-note">
+                <svg viewBox="0 0 24 24" width="16" height="16" style="vertical-align: middle; fill: currentColor;"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/></svg>
+                <span><b>Note:</b> Standard normal values will be assumed for any optional fields left blank.<br><small style="opacity: 0.85;"><b>দ্রষ্টব্য:</b> ফাঁকা রাখা ঐচ্ছিক ঘরগুলোর জন্য স্বয়ংক্রিয়ভাবে স্বাভাবিক মান ধরে নেওয়া হবে।</small></span>
+              </div>
+
+              <div class="body-measurements">
+                <div class="body-visual" aria-hidden="true">
+                  <svg viewBox="0 0 180 260"><circle cx="90" cy="37" r="25"/><path d="M60 82q30-24 60 0l-8 70 20 90h-28l-14-68-14 68H48l20-90-8-70Z"/><path d="m62 88-34 68m90-68 34 68"/></svg>
+                  <span class="scan-line"></span>
+                  <span class="body-data-tag tag-height">HEIGHT / উচ্চতা</span>
+                  <span class="body-data-tag tag-bmi">BMI / বিএমআই</span>
+                </div>
+                <div class="body-fields">
+                  <div class="form-grid four-col body-input-grid">
+                    <label class="field">
+                      <span>Height feet (উচ্চতা ফুট) <b>*</b></span>
+                      <div class="input-wrap"><input id="height_feet" type="number" min="1" max="8" placeholder="Enter feet / ফুট লিখুন" required><small>ft</small></div>
+                      <i class="field-error"></i>
+                    </label>
+                    <label class="field">
+                      <span>Height inches (উচ্চতা ইঞ্চি) <b>*</b></span>
+                      <div class="input-wrap"><input id="height_inches" type="number" min="0" max="11.9" step="0.1" placeholder="Enter inches / ইঞ্চি লিখুন" required><small>in</small></div>
+                      <i class="field-error"></i>
+                    </label>
+                    <label class="field">
+                      <span>Weight (ওজন) <b>*</b></span>
+                      <div class="input-wrap"><input id="weight_kg" type="number" min="2" max="400" step="0.1" placeholder="Enter weight / ওজন লিখুন" required><small>kg</small></div>
+                      <i class="field-error"></i>
+                    </label>
+                    <label class="field">
+                      <span>Calculated BMI (বিএমআই)</span>
+                      <div class="input-wrap bmi-wrap"><input id="bmi" type="number" min="8" max="80" step="0.1" readonly><small>kg/m²</small></div>
+                      <i class="field-error"></i>
+                    </label>
+                  </div>
+                  <input id="height_cm" type="hidden" value="170.18">
+                  <div class="bmi-summary"><span id="bmiLabel">Healthy range (স্বাভাবিক সীমা)</span><div><i id="bmiIndicator"></i></div><small id="bmiText">BMI is a screening measure and does not describe overall health. (বিএমআই শুধু একটি প্রাথমিক সূচক।)</small></div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="page-actions reveal delay-3">
+            <button class="button ghost" type="button" data-go="welcome"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg> Back (পেছনে)</button>
+            <div class="save-note"><i></i><span>Data stays in this browser session (তথ্য এই সেশনেই থাকে)</span></div>
+            <button class="button primary magnetic" type="submit">Continue to symptoms (লক্ষণ নির্বাচন করুন) <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="screen" id="screen-symptoms" data-screen="symptoms" aria-labelledby="symptoms-title">
+        <div class="page-heading reveal">
+          <div>
+            <div class="eyebrow"><span></span> Step 2 of 3 (ধাপ ২)</div>
+            <h2 id="symptoms-title">Map the current symptom pattern (বর্তমান লক্ষণ নির্বাচন করুন)</h2>
+            <p>Select every symptom that is currently present, then assign its severity from 1 to 5. (প্রতিটি লক্ষণের তীব্রতা ১ থেকে ৫ দিন।)</p>
+          </div>
+          <div class="selected-overview">
+            <span id="selectedCount">0</span>
+            <div><strong>Symptoms selected (নির্বাচিত লক্ষণ)</strong><small id="severitySummary">No severity added yet (এখনও তীব্রতা দেওয়া হয়নি)</small></div>
+          </div>
+        </div>
+
+        <div class="symptom-workspace">
+          <aside class="category-panel glass-panel reveal">
+            <div class="aside-heading"><h3>Categories (বিভাগ)</h3><button id="clearSymptoms" type="button">Clear all (সব মুছুন)</button></div>
+            <div id="categoryList" class="category-list">
+              <button class="category active" type="button" data-category="All"><span>✦</span><b>All symptoms (সব লক্ষণ)</b><em>208</em></button>
+            </div>
+            <div class="severity-legend">
+              <h4>Severity scale (তীব্রতার মাত্রা)</h4>
+              <div><i class="sev-1"></i><span>1 Very mild (খুব সামান্য)</span></div>
+              <div><i class="sev-2"></i><span>2 Mild (সামান্য)</span></div>
+              <div><i class="sev-3"></i><span>3 Moderate (মাঝারি)</span></div>
+              <div><i class="sev-4"></i><span>4 Severe (তীব্র)</span></div>
+              <div><i class="sev-5"></i><span>5 Critical (অতি তীব্র)</span></div>
+            </div>
+          </aside>
+
+          <section class="symptom-browser glass-panel reveal delay-1">
+            <div class="symptom-toolbar">
+              <label class="search-box">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+                <input id="symptomSearch" type="search" placeholder="Search symptom / লক্ষণ খুঁজুন: fever, cough, pain..." autocomplete="off">
+                <kbd>⌘ K</kbd>
+              </label>
+              <div class="view-buttons" aria-label="Symptom display density">
+                <button type="button" data-view="grid" title="Comfortable view"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg></button>
+                <button class="active" type="button" data-view="compact" title="Compact view"><svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"/></svg></button>
+              </div>
+            </div>
+            <div class="popular-row" id="popularSymptoms"></div>
+            <div class="symptom-grid compact" id="symptomGrid">
+              <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+            </div>
+            <div class="empty-state hidden" id="emptySymptoms">
+              <span>⌕</span><h3>No matching symptom found (মিলছে এমন লক্ষণ নেই)</h3><p>Try a shorter word or select another category. (অন্য শব্দ বা বিভাগ চেষ্টা করুন।)</p>
+            </div>
+          </section>
+
+          <aside class="selection-panel glass-panel reveal delay-2">
+            <div class="selection-heading"><div><h3>Current selection (বর্তমান নির্বাচন)</h3><p>Review before analysis (বিশ্লেষণের আগে যাচাই করুন)</p></div><span id="selectionBadge">0</span></div>
+            <div class="selected-list" id="selectedList">
+              <div class="selection-empty"><span>✦</span><p>Selected symptoms will appear here. (নির্বাচিত লক্ষণ এখানে দেখা যাবে।)</p></div>
+            </div>
+            <div class="severity-stats">
+              <div><span>Average severity (গড় তীব্রতা)</span><strong id="averageSeverity">0.0</strong></div>
+              <div><span>Maximum severity (সর্বোচ্চ তীব্রতা)</span><strong id="maximumSeverity">0</strong></div>
+            </div>
+            <div class="mini-chart" id="miniSeverityChart" aria-label="Selected symptom severity chart"></div>
+          </aside>
+        </div>
+
+        <div class="page-actions reveal delay-3">
+          <button class="button ghost" type="button" data-go="profile"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg> Edit patient data (রোগীর তথ্য পরিবর্তন)</button>
+          <div class="validation-note" id="symptomValidation"><i></i><span>Select at least 2 symptoms for a more meaningful pattern. (কমপক্ষে ২টি লক্ষণ নির্বাচন করুন।)</span></div>
+          <button class="button primary magnetic" type="button" id="analyzeButton" disabled>
+            Generate AI analysis (এআই বিশ্লেষণ তৈরি করুন)
+            <svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-results" data-screen="results" aria-labelledby="results-title">
+        <div class="result-heading reveal">
+          <div>
+            <div class="eyebrow"><span></span> Step 3 of 3 · Analysis complete (ধাপ ৩ · বিশ্লেষণ সম্পন্ন)</div>
+            <h2 id="results-title">Personalized assessment overview (ব্যক্তিগত স্বাস্থ্য বিশ্লেষণ)</h2>
+            <p id="resultTimestamp">Generated from the submitted symptom and measurement profile. (প্রদত্ত লক্ষণ ও পরিমাপ থেকে তৈরি।)</p>
+          </div>
+          <div class="result-actions">
+            <button class="button ghost compact" type="button" id="printReport"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4V9h16v9h-2M7 14h10v7H7z"/></svg> Print (প্রিন্ট)</button>
+            <button class="button primary compact" type="button" id="downloadPdf"><svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/></svg> Full PDF report (সম্পূর্ণ পিডিএফ)</button>
+          </div>
+        </div>
+
+        <div id="emergencyBanner" class="emergency-banner hidden"></div>
+
+        <div class="results-dashboard">
+          <article class="result-card diagnosis-card glass-panel tilt-card reveal">
+            <div class="card-topline"><span>Top predicted pattern (প্রধান সম্ভাব্য রোগ)</span><em id="topCategory">Category</em></div>
+            <div class="diagnosis-main">
+              <div class="confidence-orb" id="confidenceOrb" style="--confidence:0">
+                <div class="confidence-depth"></div>
+                <div class="confidence-inner"><strong id="confidenceValue">0%</strong><span>confidence (নিশ্চয়তা)</span></div>
+              </div>
+              <div class="diagnosis-copy"><small>Highest model probability (মডেলের সর্বোচ্চ সম্ভাবনা)</small><h3 id="topDisease">Awaiting result (ফলাফলের অপেক্ষা)</h3><p id="topDiseaseMeta">Typical duration and urgency will appear here.</p><div class="diagnosis-tags" id="diagnosisTags"></div></div>
+            </div>
+            <div class="confidence-note"><i></i><p id="confidenceMessage">Probability is not the same as a confirmed diagnosis.</p></div>
+          </article>
+
+          <article class="result-card risk-card glass-panel tilt-card reveal delay-1">
+            <div class="card-topline"><span>Clinical risk screen (ক্লিনিক্যাল ঝুঁকি)</span><em id="riskPill">Pending</em></div>
+            <div class="speedometer-wrap">
+              <div class="risk-dial" id="riskGauge" data-level="low" style="--risk-angle:-68deg">
+                <div class="risk-halo"></div>
+                <svg viewBox="0 0 260 176" role="img" aria-label="Clinical risk speedometer">
+                  <defs>
+                    <linearGradient id="riskTrackGradient" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#62e6aa"/><stop offset=".48" stop-color="#ffd171"/><stop offset="1" stop-color="#ff718b"/>
+                    </linearGradient>
+                    <linearGradient id="needleGradient" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d8baff"/>
+                    </linearGradient>
+                    <filter id="riskGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  </defs>
+                  <path class="dial-shadow" d="M35 137 A95 95 0 0 1 225 137"/>
+                  <path class="dial-track" d="M35 137 A95 95 0 0 1 225 137"/>
+                  <path class="dial-progress" id="riskArc" d="M35 137 A95 95 0 0 1 225 137"/>
+                  <g class="dial-ticks">
+                    <path d="M42 129l10-3M59 83l9 6M98 48l4 10M158 48l-4 10M198 83l-9 6M218 129l-10-3"/>
+                  </g>
+                  <g class="dial-needle-group">
+                    <line x1="130" y1="137" x2="201" y2="137"/>
+                    <circle cx="130" cy="137" r="11"/>
+                    <circle cx="130" cy="137" r="4"/>
+                  </g>
+                </svg>
+                <span class="gauge-label low-label">Low (কম)</span><span class="gauge-label moderate-label">Moderate (মাঝারি)</span><span class="gauge-label high-label">High (উচ্চ)</span>
+                <div class="risk-score"><strong id="riskScore">0</strong></div>
+              </div>
+            </div>
+            <h3 id="riskUrgency">Risk assessment pending</h3>
+            <p id="riskRationale">The conservative triage layer checks red flags and abnormal measurements separately from the model.</p>
+          </article>
+
+          <article class="result-card uncertainty-card glass-panel tilt-card reveal delay-2">
+            <div class="card-topline"><span>Model certainty (মডেলের নিশ্চয়তা)</span><em id="uncertaintyPill">Pending</em></div>
+            <div class="certainty-visual">
+              <div class="radar-disc">
+                <span class="radar-sweep"></span><i class="dot dot-one"></i><i class="dot dot-two"></i><i class="dot dot-three"></i>
+                <strong id="certaintyScore">0</strong><small>clarity index (স্বচ্ছতা সূচক)</small>
+              </div>
+              <div class="certainty-metrics">
+                <div><span>Top-two margin (শীর্ষ দুইয়ের পার্থক্য)</span><b id="marginValue">0%</b></div>
+                <div><span>Entropy (অনিশ্চয়তা)</span><b id="entropyValue">0%</b></div>
+                <div><span>Unknown inputs (অজানা ইনপুট)</span><b id="unknownCount">0</b></div>
+              </div>
+            </div>
+            <p id="uncertaintyMessage">Certainty details will appear after analysis.</p>
+          </article>
+
+          <article class="result-card vital-card glass-panel reveal">
+            <div class="card-topline"><span>Vital-sign intelligence (ভাইটাল বিশ্লেষণ)</span><em>Submitted readings (প্রদত্ত পরিমাপ)</em></div>
+            <div class="vital-chart" id="vitalChart"></div>
+            <div class="vital-legend"><span><i class="normal-dot"></i>Within common range (স্বাভাবিক)</span><span><i class="watch-dot"></i>Review (পর্যালোচনা)</span><span><i class="alert-dot"></i>Urgent (জরুরি)</span></div>
+          </article>
+
+          <article class="result-card differential-card glass-panel reveal delay-1">
+            <div class="card-topline"><span>Differential probability (সম্ভাব্য রোগের তুলনা)</span><em>Top 5 patterns (শীর্ষ ৫)</em></div>
+            <div class="probability-chart" id="probabilityChart"></div>
+          </article>
+
+          <article class="result-card symptom-chart-card glass-panel reveal delay-2">
+            <div class="card-topline"><span>Symptom severity profile (লক্ষণের তীব্রতা)</span><em id="symptomChartCount">0 selected</em></div>
+            <div class="line-chart" id="severityLineChart"></div>
+            <div class="chart-caption"><span>Higher points represent greater reported severity (উচ্চ পয়েন্ট মানে বেশি তীব্রতা)</span><b id="maxSymptomLabel">No symptom data (লক্ষণ নেই)</b></div>
+          </article>
+
+          <article class="result-card explanation-card glass-panel reveal">
+            <div class="card-topline"><span>Explainable evidence (ব্যাখ্যাযোগ্য প্রমাণ)</span><em>Why these patterns ranked (কেন এগুলো উপরে এসেছে)</em></div>
+            <div class="explanation-list" id="explanationList"></div>
+          </article>
+
+          <article class="result-card care-card glass-panel reveal delay-1">
+            <div class="card-topline"><span>Recommended next steps (পরবর্তী করণীয়)</span><em>Care navigation (চিকিৎসা নির্দেশনা)</em></div>
+            <div class="care-tabs" role="tablist">
+              <button class="active" type="button" data-care-tab="actions">Actions (করণীয়)</button>
+              <button type="button" data-care-tab="monitor">Monitor (পর্যবেক্ষণ)</button>
+              <button type="button" data-care-tab="clinician">Clinician may consider (চিকিৎসক বিবেচনা করতে পারেন)</button>
+              <button type="button" data-care-tab="safety">Medication safety (ওষুধ নিরাপত্তা)</button>
+            </div>
+            <div class="care-content" id="careContent"></div>
+          </article>
+
+          <article class="result-card report-card glass-panel reveal delay-2">
+            <div class="card-topline"><span>Assessment snapshot (মূল্যায়নের সারাংশ)</span><em id="predictionId">ID pending</em></div>
+            <div class="snapshot-grid">
+              <div><span>Patient (রোগী)</span><strong id="snapshotPatient">Anonymous</strong></div>
+              <div><span>Age / sex (বয়স / লিঙ্গ)</span><strong id="snapshotDemographics">—</strong></div>
+              <div><span>Duration / onset (সময়কাল / শুরু)</span><strong id="snapshotPattern">—</strong></div>
+              <div><span>Symptoms (লক্ষণ)</span><strong id="snapshotSymptoms">—</strong></div>
+              <div><span>Max severity (সর্বোচ্চ তীব্রতা)</span><strong id="snapshotSeverity">—</strong></div>
+              <div><span>Model (মডেল)</span><strong id="snapshotModel">—</strong></div>
+            </div>
+            <div class="report-timeline">
+              <div class="done"><i></i><span>Patient data validated (রোগীর তথ্য যাচাই হয়েছে)</span></div>
+              <div class="done"><i></i><span>Symptoms severity-mapped (লক্ষণের তীব্রতা নির্ধারিত)</span></div>
+              <div class="done"><i></i><span>Differential probability generated (সম্ভাব্যতা তৈরি হয়েছে)</span></div>
+              <div class="done"><i></i><span>Independent safety screen completed (নিরাপত্তা যাচাই সম্পন্ন)</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="result-disclaimer glass-panel reveal delay-3">
+          <div class="disclaimer-mark">i</div>
+          <div><strong>Important limitation (গুরুত্বপূর্ণ সীমাবদ্ধতা)</strong><p id="resultDisclaimer">Educational decision-support output only. This is not a medical diagnosis.</p></div>
+        </div>
+
+        <div class="page-actions result-footer-actions reveal delay-3">
+          <button class="button ghost" type="button" data-go="symptoms"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg> Edit symptoms (লক্ষণ পরিবর্তন)</button>
+          <button class="button secondary" type="button" id="newAssessment"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6V3m0 5.6h5.6"/></svg> Start new assessment (নতুন মূল্যায়ন)</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-brand"><span class="footer-brand-dot"></span><strong>MediSense AI</strong><small>Educational clinical decision-support prototype (শিক্ষামূলক স্বাস্থ্য সহায়তা)</small></div>
+      <div class="footer-author">
+        <p>Designed &amp; Developed by <strong>Estiuk Arafat Arnob</strong></p>
+        <nav class="social-links" aria-label="Estiuk Arafat Arnob social profiles">
+          <a href="https://www.linkedin.com/in/estiuk-arafat-arnob-0350ba34a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10v7M8 7.5v.1M12 17v-4.1c0-1.7 2.2-2.1 3-1 .5.6.5 1.4.5 2.2V17M12 10v7"/></svg>
+          </a>
+          <a href="https://github.com/ea-arnob-07/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.7-1.3-2.3-.3-4.7-1.1-4.7-5.1 0-1.1.4-2.1 1-2.8-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.9 1.1a10 10 0 0 1 5.3 0c2-1.4 2.9-1.1 2.9-1.1.5 1.4.2 2.4.1 2.7.7.7 1 1.7 1 2.8 0 4-2.4 4.8-4.7 5.1.4.3.7 1 .7 1.9v2.6c0 .3.2.6.7.5A9.2 9.2 0 0 0 12 2.8Z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/ea.arnob.07/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile" title="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M14.5 8H16V5.5h-2c-2.5 0-4 1.5-4 4V11H8v2.7h2V20h3v-6.3h2.4L16 11h-3V9.7c0-1.1.4-1.7 1.5-1.7Z"/></svg>
+          </a>
+        </nav>
+      </div>
+      <span>© <b id="year"></b> · Privacy-conscious local session</span>
+    </footer>
+  </div>
+
+  <div class="analysis-overlay" id="analysisOverlay" aria-live="polite" aria-busy="true">
+    <div class="analysis-core">
+      <div class="analysis-sphere"><i></i><i></i><i></i><span>AI</span></div>
+      <h2>Analyzing the health pattern (স্বাস্থ্য তথ্য বিশ্লেষণ হচ্ছে)</h2>
+      <p id="analysisStage">Validating submitted measurements... (পরিমাপ যাচাই হচ্ছে...)</p>
+      <div class="analysis-progress"><i id="analysisProgress"></i></div>
+      <div class="analysis-steps">
+        <span class="active">Input validation (ইনপুট যাচাই)</span><span>Pattern matching (প্যাটার্ন মিলানো)</span><span>Safety triage (ঝুঁকি যাচাই)</span><span>Visual report (ভিজ্যুয়াল রিপোর্ট)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "rows": 25000,
+  "columns": 236,
+  "duplicate_case_ids": 0,
+  "duplicate_rows": 0,
+  "missing_cells": 31733,
+  "missing_by_column": {
+    "Comorbidity_2": 21000,
+    "Comorbidity_1": 10733,
+    "Case_ID": 0,
+    "Data_Origin": 0,
+    "Age": 0,
+    "Split": 0,
+    "Pregnancy_Status": 0,
+    "Sex": 0,
+    "Smoking_Status": 0,
+    "Symptom_Duration_Days": 0,
+    "Onset_Type": 0,
+    "Temperature_C": 0,
+    "Heart_Rate_BPM": 0,
+    "Respiratory_Rate_BPM": 0,
+    "SpO2_Percent": 0,
+    "Systolic_BP": 0,
+    "Diastolic_BP": 0,
+    "BMI": 0,
+    "Random_Glucose_mg_dL": 0,
+    "Pain_Score_0_10": 0
+  },
+  "invalid_symptom_values_total": 0,
+  "invalid_symptom_columns": {},
+  "disease_classes": 179,
+  "minimum_class_rows": 75,
+  "maximum_class_rows": 560,
+  "split_counts": {
+    "Train": 17523,
+    "Test": 3802,
+    "Validation": 3675
+  },
+  "warning": "Passing structural checks does not make synthetic data clinically representative."
+}

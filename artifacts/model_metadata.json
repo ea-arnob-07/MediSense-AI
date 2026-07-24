@@ -1,0 +1,52 @@
+{
+  "model_version": "synthetic-ensemble-20260723-183835",
+  "selected_parameters": {
+    "multinomial_nb_alpha": 0.2,
+    "nb_weight": 0.6000000000000001,
+    "prototype_weight": 0.3999999999999999,
+    "prototype_temperature": 0.025,
+    "calibration_temperature": 1.2820146043889866
+  },
+  "validation_metrics": {
+    "accuracy": 0.9425850340136055,
+    "macro_f1": 0.9438127659475584,
+    "weighted_f1": 0.9430491978464641,
+    "top3_accuracy": 0.987482993197279,
+    "top5_accuracy": 0.9948299319727891,
+    "log_loss": 0.19509301565407694,
+    "expected_calibration_error": 0.01238346729268385,
+    "mean_confidence": 0.9305573576700865
+  },
+  "test_metrics": {
+    "accuracy": 0.9484481851657023,
+    "macro_f1": 0.94830154495614,
+    "weighted_f1": 0.9484504607496406,
+    "top3_accuracy": 0.9897422409258285,
+    "top5_accuracy": 0.9963177275118359,
+    "log_loss": 0.1598214216707864,
+    "expected_calibration_error": 0.015470991940149689,
+    "mean_confidence": 0.936742631351981
+  },
+  "data": {
+    "dataset_rows": 25000,
+    "train_rows": 17523,
+    "validation_rows": 3675,
+    "test_rows": 3802,
+    "diseases": 179,
+    "symptoms": 208,
+    "synthetic_dataset": true
+  },
+  "excluded_leakage_columns": [
+    "Case_ID",
+    "Data_Origin",
+    "Disease",
+    "Disease_Category",
+    "Disease_Severity",
+    "Emergency_Red_Flag",
+    "Max_Symptom_Severity",
+    "Mean_Present_Severity",
+    "Split",
+    "Symptom_Count",
+    "Urgency_Level"
+  ]
+}

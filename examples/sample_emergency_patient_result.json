@@ -1,0 +1,298 @@
+{
+  "prediction_id": "31ee1353-a031-4428-aa62-b21b340ea212",
+  "generated_at": "2026-07-23T22:09:55.440382+00:00",
+  "model_version": "synthetic-ensemble-20260723-183835",
+  "predictions": [
+    {
+      "disease": "Acute_Myocardial_Infarction",
+      "disease_display": "Acute Myocardial Infarction",
+      "disease_display_bn": "তীব্র হৃদ্‌যন্ত্রের রক্তনালী বন্ধ বা হার্ট অ্যাটাক",
+      "probability": 0.999999,
+      "category": "Cardiovascular",
+      "category_bn": "হৃদ্‌যন্ত্র ও রক্তনালী",
+      "base_urgency": "Emergency",
+      "typical_duration_days": "1-3",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Chest_Pain",
+            "display": "Chest Pain",
+            "display_bn": "বুক ব্যথা",
+            "severity": 5
+          },
+          {
+            "symptom": "Shortness_of_Breath",
+            "display": "Shortness of Breath",
+            "display_bn": "শ্বাসকষ্ট",
+            "severity": 4
+          },
+          {
+            "symptom": "Cold_Sweat",
+            "display": "Cold Sweat",
+            "display_bn": "ঠান্ডা ঘাম",
+            "severity": 4
+          },
+          {
+            "symptom": "Nausea",
+            "display": "Nausea",
+            "display_bn": "বমি বমি ভাব",
+            "severity": 3
+          },
+          {
+            "symptom": "Jaw_Pain",
+            "display": "Jaw Pain",
+            "display_bn": "চোয়ালে ব্যথা",
+            "severity": 3
+          }
+        ],
+        "missing_signature_symptoms": [],
+        "signature_match_ratio": 1.0
+      }
+    },
+    {
+      "disease": "Stable_Angina",
+      "disease_display": "Stable Angina",
+      "disease_display_bn": "স্থিতিশীল এনজাইনা",
+      "probability": 1e-06,
+      "category": "Cardiovascular",
+      "category_bn": "হৃদ্‌যন্ত্র ও রক্তনালী",
+      "base_urgency": "Urgent",
+      "typical_duration_days": "1-180",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Chest_Pain",
+            "display": "Chest Pain",
+            "display_bn": "বুক ব্যথা",
+            "severity": 5
+          },
+          {
+            "symptom": "Shortness_of_Breath",
+            "display": "Shortness of Breath",
+            "display_bn": "শ্বাসকষ্ট",
+            "severity": 4
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Exercise_Intolerance",
+            "display": "Exercise Intolerance",
+            "display_bn": "ব্যায়াম সহ্য না হওয়া"
+          }
+        ],
+        "signature_match_ratio": 0.667
+      }
+    },
+    {
+      "disease": "Supraventricular_Tachycardia",
+      "disease_display": "Supraventricular Tachycardia",
+      "disease_display_bn": "সুপ্রাভেন্ট্রিকুলার ট্যাকিকার্ডিয়া",
+      "probability": 0.0,
+      "category": "Cardiovascular",
+      "category_bn": "হৃদ্‌যন্ত্র ও রক্তনালী",
+      "base_urgency": "Urgent",
+      "typical_duration_days": "1-10",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Chest_Pain",
+            "display": "Chest Pain",
+            "display_bn": "বুক ব্যথা",
+            "severity": 5
+          },
+          {
+            "symptom": "Shortness_of_Breath",
+            "display": "Shortness of Breath",
+            "display_bn": "শ্বাসকষ্ট",
+            "severity": 4
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Rapid_Heartbeat",
+            "display": "Rapid Heartbeat",
+            "display_bn": "দ্রুত হৃদস্পন্দন"
+          },
+          {
+            "symptom": "Palpitations",
+            "display": "Palpitations",
+            "display_bn": "বুক ধড়ফড়"
+          },
+          {
+            "symptom": "Dizziness",
+            "display": "Dizziness",
+            "display_bn": "মাথা ঘোরা"
+          }
+        ],
+        "signature_match_ratio": 0.4
+      }
+    },
+    {
+      "disease": "Pneumothorax",
+      "disease_display": "Pneumothorax",
+      "disease_display_bn": "ফুসফুস চুপসে যাওয়া",
+      "probability": 0.0,
+      "category": "Respiratory",
+      "category_bn": "শ্বাসতন্ত্র",
+      "base_urgency": "Emergency",
+      "typical_duration_days": "1-5",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Shortness_of_Breath",
+            "display": "Shortness of Breath",
+            "display_bn": "শ্বাসকষ্ট",
+            "severity": 4
+          },
+          {
+            "symptom": "Chest_Pain",
+            "display": "Chest Pain",
+            "display_bn": "বুক ব্যথা",
+            "severity": 5
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Rapid_Breathing",
+            "display": "Rapid Breathing",
+            "display_bn": "দ্রুত শ্বাস নেওয়া"
+          },
+          {
+            "symptom": "Blue_Lips",
+            "display": "Blue Lips",
+            "display_bn": "ঠোঁট নীল হওয়া"
+          }
+        ],
+        "signature_match_ratio": 0.5
+      }
+    },
+    {
+      "disease": "Panic_Disorder",
+      "disease_display": "Panic Disorder",
+      "disease_display_bn": "প্যানিক ডিসঅর্ডার",
+      "probability": 0.0,
+      "category": "Mental_Behavioral",
+      "category_bn": "মানসিক ও আচরণগত",
+      "base_urgency": "Soon",
+      "typical_duration_days": "1-365",
+      "explanation": {
+        "matched_signature_symptoms": [
+          {
+            "symptom": "Shortness_of_Breath",
+            "display": "Shortness of Breath",
+            "display_bn": "শ্বাসকষ্ট",
+            "severity": 4
+          },
+          {
+            "symptom": "Chest_Pain",
+            "display": "Chest Pain",
+            "display_bn": "বুক ব্যথা",
+            "severity": 5
+          }
+        ],
+        "missing_signature_symptoms": [
+          {
+            "symptom": "Panic",
+            "display": "Panic",
+            "display_bn": "আতঙ্ক"
+          },
+          {
+            "symptom": "Palpitations",
+            "display": "Palpitations",
+            "display_bn": "বুক ধড়ফড়"
+          },
+          {
+            "symptom": "Dizziness",
+            "display": "Dizziness",
+            "display_bn": "মাথা ঘোরা"
+          }
+        ],
+        "signature_match_ratio": 0.4
+      }
+    }
+  ],
+  "risk_assessment": {
+    "risk_level": "Critical",
+    "risk_score": 10,
+    "urgency": "Emergency care now",
+    "emergency": true,
+    "red_flags": [
+      "Severe chest pain with possible heart-attack features"
+    ],
+    "abnormal_vitals": [
+      "Low oxygen saturation (92%)",
+      "Rapid breathing (25/min)"
+    ],
+    "rationale": [
+      "Multiple moderate-to-severe symptoms",
+      "Acute Myocardial Infarction profile has emergency base urgency"
+    ]
+  },
+  "care_guidance": {
+    "recommended_actions": [
+      "Contact local emergency services now (999 where applicable).",
+      "Do not drive yourself if you are faint, confused, severely short of breath, or having severe chest pain.",
+      "Stay with the person, keep the airway clear, and follow emergency-dispatch instructions.",
+      "Bring a list of medicines, allergies, medical conditions, and the time symptoms started."
+    ],
+    "what_to_monitor": [
+      "Track temperature, symptom severity, and duration.",
+      "Track breathing difficulty, chest pain, mental status, hydration, urine output, and new weakness.",
+      "Re-check abnormal home measurements with a reliable device when safe to do so."
+    ],
+    "clinician_may_consider": [
+      "cardiovascular examination",
+      "ECG and blood-pressure review if a clinician considers them appropriate"
+    ],
+    "medication_safety": [
+      "Do not start, stop, or change prescription medicine based only on this result.",
+      "Do not use leftover antibiotics or steroids without a licensed clinician's advice.",
+      "Seek care sooner if symptoms are rapidly worsening, new warning signs appear, or you are worried."
+    ]
+  },
+  "uncertainty": {
+    "status": "low",
+    "top_probability": 0.999999,
+    "top_two_margin": 0.999999,
+    "normalized_entropy": 3e-06,
+    "unknown_symptoms": [],
+    "message": "The model found a comparatively clear pattern, but this is still not a diagnosis."
+  },
+  "input_summary": {
+    "active_symptom_count": 5,
+    "maximum_symptom_severity": 5,
+    "active_symptoms": [
+      {
+        "symptom": "Chest_Pain",
+        "display": "Chest Pain",
+        "display_bn": "বুক ব্যথা",
+        "severity": 5
+      },
+      {
+        "symptom": "Cold_Sweat",
+        "display": "Cold Sweat",
+        "display_bn": "ঠান্ডা ঘাম",
+        "severity": 4
+      },
+      {
+        "symptom": "Shortness_of_Breath",
+        "display": "Shortness of Breath",
+        "display_bn": "শ্বাসকষ্ট",
+        "severity": 4
+      },
+      {
+        "symptom": "Jaw_Pain",
+        "display": "Jaw Pain",
+        "display_bn": "চোয়ালে ব্যথা",
+        "severity": 3
+      },
+      {
+        "symptom": "Nausea",
+        "display": "Nausea",
+        "display_bn": "বমি বমি ভাব",
+        "severity": 3
+      }
+    ]
+  },
+  "disclaimer": "Educational decision-support output only. The dataset is synthetic and the model is not clinically validated, medically certified, or a substitute for examination, testing, diagnosis, or treatment by a licensed professional."
+}
