@@ -21,11 +21,20 @@
 
 ---
 
+## 🌐 Live Server / Demo
+
+> [!IMPORTANT]
+> 🚀 **Experience the Live Application!**  
+> The project is currently hosted and live on Render. You can access the API and Dashboard here:
+> 
+> **👉 [https://medisense-api-5jcj.onrender.com](https://medisense-api-5jcj.onrender.com)**
+
 > [!WARNING]
 > **Medical and safety notice:** MediSense AI is an educational software prototype trained and evaluated on synthetic, medically informed data. It is **not clinically validated**, is not a medical device, and must not be used to confirm or exclude a diagnosis, select medication, determine treatment, or replace a licensed healthcare professional. Emergency symptoms require immediate professional care regardless of model output.
 
 ## Table of Contents
 
+- [🌐 Live Server / Demo](#-live-server--demo)
 1. [Project Overview](#project-overview)
 2. [Problem Statement](#problem-statement)
 3. [Project Objectives](#project-objectives)
