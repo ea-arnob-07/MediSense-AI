@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: medisense-api
+    env: docker
+    repo: https://github.com/ea-arnob-07/MediSense-AI
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+
+  - type: web
+    name: medisense-dashboard
+    env: docker
+    repo: https://github.com/ea-arnob-07/MediSense-AI
+    dockerfilePath: ./Dockerfile
+    dockerCommand: "streamlit run dashboard/streamlit_app.py --server.address 0.0.0.0 --server.port $PORT"
+    plan: free
