@@ -5081,6 +5081,7 @@ body.reduced-motion .risk-dial[data-level="critical"] {
   .mobile-brand-dev {
     display: block;
     margin-left: auto;
+    margin-right: -10px;
     font-size: 8px;
     color: var(--dim);
     line-height: 1.2;
@@ -5093,5 +5094,8 @@ body.reduced-motion .risk-dial[data-level="critical"] {
     color: #e9dcff;
     letter-spacing: .1px;
     text-transform: none;
+  }
+  .footer-brand-dot {
+    display: none;
   }
 }
