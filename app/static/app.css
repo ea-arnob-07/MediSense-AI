@@ -2527,6 +2527,7 @@ h1 span {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
   padding-bottom: 15px;
   margin-bottom: 18px;
@@ -2799,7 +2800,7 @@ h1 span {
 .gauge-label {
   position: absolute;
   z-index: 5;
-  top: 85px;
+  top: 130px;
   font-size: 7.5px;
   font-weight: 700;
   color: var(--dim);
@@ -2812,8 +2813,9 @@ h1 span {
 }
 
 .moderate-label {
-  left: 89px;
-  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
 }
 
 .high-label {
@@ -4869,7 +4871,7 @@ body.reduced-motion *::after {
 
 .gauge-label {
   position: absolute;
-  top: 155px;
+  top: 145px;
   color: var(--dim);
   font-size: 7px;
   font-weight: 750;
