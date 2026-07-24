@@ -5070,4 +5070,28 @@ body.reduced-motion .risk-dial[data-level="critical"] {
 .scan-beam,
 .orb-stage::before {
   pointer-events: none;
+}.mobile-brand-dev {
+  display: none;
+}
+
+@media (max-width: 1250px) {
+  .brand {
+    width: 100%;
+  }
+  .mobile-brand-dev {
+    display: block;
+    margin-left: auto;
+    font-size: 8px;
+    color: var(--dim);
+    line-height: 1.2;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+  }
+  .mobile-brand-dev strong {
+    font-size: 10px;
+    color: #e9dcff;
+    letter-spacing: .1px;
+    text-transform: none;
+  }
 }
