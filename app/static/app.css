@@ -5103,3 +5103,20 @@ body.reduced-motion .risk-dial[data-level="critical"] {
     display: none;
   }
 }
+
+/* Mobile scrolling performance optimizations */
+@media (max-width: 680px) {
+  .noise {
+    display: none !important;
+  }
+  .glass-panel {
+    transform: translateZ(0);
+    will-change: transform;
+    backdrop-filter: blur(12px) saturate(125%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
+  }
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+}
